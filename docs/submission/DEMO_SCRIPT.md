@@ -26,4 +26,4 @@ Show `domain/TaskModel.ts` as the Model, `useTaskController.ts` as the Controlle
 
 ## 6:15–6:45 — Verification and close
 
-Show the terminal results for `npm run test:run`, `npm run typecheck`, and `npm run build`. Close by explaining that Factory, Strategy, Repository, and MVC separation were selected because they solve different responsibilities in this planner.
+Show the terminal results for `pnpm test:run`, `pnpm typecheck`, and `pnpm build`. Close by explaining that Factory, Strategy, Repository, and MVC separation were selected because they solve different responsibilities in this planner.

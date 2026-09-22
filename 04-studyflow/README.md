@@ -31,16 +31,16 @@ The model is the immutable task state and transitions in `domain/Task.ts` and `d
 ## Run the project
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000). The default scripts are:
 
 ```bash
-npm run test:run   # 21 automated tests
-npm run typecheck
-npm run build
+pnpm test:run   # 21 automated tests
+pnpm typecheck
+pnpm build
 ```
 
 ## Fresh-start notes
