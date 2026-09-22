@@ -64,6 +64,12 @@ export function useTaskController(repository: TaskRepository, options: Controlle
     commit(removeTask(tasks, id));
   }
 
+  function reload() {
+    const fresh = repository.load();
+    setTasks(fresh.tasks);
+    setWarning(fresh.warning);
+  }
+
   return {
     tasks,
     visibleTasks: filterTasks(tasks, filter),
@@ -77,5 +83,6 @@ export function useTaskController(repository: TaskRepository, options: Controlle
     setFilter,
     toggleTask: toggleById,
     deleteTask: deleteById,
+    reload,
   };
 }
