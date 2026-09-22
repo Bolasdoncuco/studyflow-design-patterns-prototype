@@ -8,9 +8,28 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "docs" / "submission"
 
 def add_markdown(doc: Document, text: str) -> None:
-    for raw in text.splitlines():
+    lines = text.splitlines()
+    index = 0
+    while index < len(lines):
+        raw = lines[index]
         line = raw.strip()
+        if line.startswith("|"):
+            rows = []
+            while index < len(lines) and lines[index].strip().startswith("|"):
+                cells = [cell.strip() for cell in lines[index].strip().strip("|").split("|")]
+                if not all(set(cell) <= {"-", ":", " "} for cell in cells):
+                    rows.append(cells)
+                index += 1
+            if rows:
+                table = doc.add_table(rows=len(rows), cols=len(rows[0]))
+                table.style = "Table Grid"
+                for row_index, row in enumerate(rows):
+                    for col_index, value in enumerate(row):
+                        table.cell(row_index, col_index).text = value
+                doc.add_paragraph()
+            continue
         if not line:
+            index += 1
             continue
         if line.startswith("# "):
             p = doc.add_heading(line[2:], level=1)
@@ -21,14 +40,10 @@ def add_markdown(doc: Document, text: str) -> None:
         elif line.startswith("- "):
             p = doc.add_paragraph(style="List Bullet")
             p.add_run(line[2:])
-        elif line.startswith("|"):
-            # Tables are represented as readable pipe-separated paragraphs in the DOCX;
-            # the Markdown source remains the authoritative submission table.
-            p = doc.add_paragraph()
-            p.add_run(line.replace("|", "  |  ")).font.name = "Aptos"
         else:
             p = doc.add_paragraph(line)
         p.paragraph_format.space_after = Pt(6)
+        index += 1
 
 def build(source: str, target: str) -> None:
     doc = Document()
