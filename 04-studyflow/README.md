@@ -14,11 +14,11 @@ StudyFlow is a local-first academic planner. A student can add assignments, exam
 
 ### Factory
 
-`patterns/factory/TaskFactory.ts:56-75` defines `TaskFactory.create` and the concrete assignment, exam, and project products. The controller calls it at `controllers/useTaskController.ts:45` so the form does not construct task variants directly.
+`patterns/factory/TaskFactory.ts:32-60` defines the concrete assignment, exam, and project products plus `TaskFactory.create`. The controller calls it at `controllers/useTaskController.ts:45` so the form does not construct task variants directly.
 
 ### Strategy
 
-`patterns/strategy/PriorityStrategy.ts:8-17` defines the strategy contract, while `DeadlineFirstStrategy`, `EffortFirstStrategy`, and `BalancedStrategy` implement interchangeable ranking algorithms. `getPriorityStrategy` at `patterns/strategy/PriorityStrategy.ts:84-90` selects the requested strategy and `applyPriority` at lines 92-98 applies it. The controller uses the strategy at `controllers/useTaskController.ts:49`.
+`patterns/strategy/PriorityStrategy.ts:8-12` defines the strategy contract, while the three concrete strategies at lines 51-76 implement interchangeable ranking algorithms. `getPriorityStrategy` at `patterns/strategy/PriorityStrategy.ts:84-86` selects the requested strategy and `applyPriority` at lines 88-91 applies it. The controller uses the strategy at `controllers/useTaskController.ts:49`.
 
 ### Repository
 
