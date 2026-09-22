@@ -24,7 +24,7 @@ The three instructor prototypes were installed and run locally with `npm install
 |---|---|---|
 | Which files are Model, View, and Controller? | Model: `models/Task.ts`; View: `components/TaskForm.tsx` and `components/TaskList.tsx`; Controller: `controllers/TaskController.ts`. API routes connect HTTP requests to the controller. | `03-mvc/models/Task.ts:12-38`; `03-mvc/components/TaskForm.tsx`; `03-mvc/components/TaskList.tsx`; `03-mvc/controllers/TaskController.ts:15-44` |
 | What happens if the View calls `fetch` directly? | Rendering becomes coupled to transport details, validation and error handling get duplicated, and the View becomes harder to test or reuse. The controller boundary keeps those concerns in one place. | `03-mvc/app/api/tasks/route.ts:5-16` delegates to the controller instead of putting task rules in the component. |
-| Where could I use MVC in my own project? | A dashboard or CRUD application benefits from a View for rendering, a Controller for use-case coordination, and a Model for domain rules. StudyFlow applies this as a React View, `useTaskController`, and immutable task model. | `04-studyflow/app/page.tsx:15-21`; `04-studyflow/controllers/useTaskController.ts:24-83`; `04-studyflow/domain/TaskModel.ts:10-41` |
+| Where could I use MVC in my own project? | A dashboard or CRUD application benefits from a View for rendering, a Controller for use-case coordination, and a Model for domain rules. StudyFlow applies this as a React View, `useTaskController`, and immutable task model. | `04-studyflow/app/page.tsx:15-21`; `04-studyflow/controllers/useTaskController.ts:24-83`; `04-studyflow/domain/TaskModel.ts:10-46` |
 
 ## Runtime observations
 

@@ -26,7 +26,7 @@ StudyFlow is a local-first academic planner. A student can add assignments, exam
 
 ### MVC-style separation
 
-The model is the immutable task state and transitions in `domain/Task.ts` and `domain/TaskModel.ts:10-43`. The controller coordinates validation, Factory creation, Strategy ranking, filtering, and persistence in `controllers/useTaskController.ts:24-87`. The View is the React component tree in `app/page.tsx:18-21` and `components/`. This keeps UI rendering separate from domain transitions and application coordination.
+The model is the immutable task state and transitions in `domain/Task.ts` and `domain/TaskModel.ts:10-46`. The controller coordinates validation, Factory creation, Strategy ranking, filtering, and persistence in `controllers/useTaskController.ts:24-87`. The View is the React component tree in `app/page.tsx:18-21` and `components/`. This keeps UI rendering separate from domain transitions and application coordination.
 
 ## Run the project
 
