@@ -10,7 +10,7 @@ Create one assignment, one exam, and one project. Point out the calculated prior
 
 ## 2:00–3:00 — Factory
 
-Open `patterns/factory/TaskFactory.ts` and show `TaskFactory.create` at lines 56–75. Explain that the registry selects the product for Assignment, Exam, or Project. Then return to the form and add another task to show the behavior working.
+Open `patterns/factory/TaskFactory.ts` and show the concrete products and `TaskFactory.create` at lines 32–60. Explain that the registry selects the product for Assignment, Exam, or Project. Then return to the form and add another task to show the behavior working.
 
 ## 3:00–4:00 — Strategy
 

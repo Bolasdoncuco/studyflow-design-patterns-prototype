@@ -30,8 +30,9 @@ describe("TaskModel", () => {
   });
 
   it("reprioritizes every task without changing ids", () => {
-    const result = reprioritizeTasks([baseTask, completedExam], getPriorityStrategy("deadline"), today);
-    expect(result.map((task) => task.id)).toEqual([baseTask.id, completedExam.id]);
+    const laterTask = { ...baseTask, id: "task-3", dueDate: "2026-10-21" };
+    const result = reprioritizeTasks([laterTask, baseTask, completedExam], getPriorityStrategy("deadline"), today);
+    expect(result.map((task) => task.id)).toEqual([baseTask.id, completedExam.id, laterTask.id]);
   });
 
   it("summarizes active, completed, and urgent tasks", () => {

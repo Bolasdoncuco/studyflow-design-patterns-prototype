@@ -20,7 +20,10 @@ export function removeTask(tasks: StudyTask[], id: string): StudyTask[] {
 }
 
 export function reprioritizeTasks(tasks: StudyTask[], strategy: PriorityStrategy, today?: Date): StudyTask[] {
-  return tasks.map((task) => calculatePriority(task, strategy, today));
+  return tasks
+    .map((task, index) => ({ task: calculatePriority(task, strategy, today), index }))
+    .sort((left, right) => right.task.priorityScore - left.task.priorityScore || left.index - right.index)
+    .map(({ task }) => task);
 }
 
 export function filterTasks(tasks: StudyTask[], filter: TaskFilter): StudyTask[] {
